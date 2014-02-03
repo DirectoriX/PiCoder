@@ -186,7 +186,6 @@ namespace PiCoder
                                         int x = (int)(i1 * Math.Pow(2, k1 - 1));
                                         int y = (int)(j1 * Math.Pow(2, k1 - 1));
                                         if (dim[x, y]) continue;
-                                        //bmp.SetPixel(x, y, Str2Clr(str));
                                         int size = (int)(Math.Pow(2, k1 - 1));
                                         rect(Str2Clr(str), x, y, size, size);
                                         this.str = this.str.Substring(4);
