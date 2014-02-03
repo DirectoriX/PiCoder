@@ -71,7 +71,7 @@ namespace PiCoder
 
             FileStream f1 = new FileStream("./output.dat", FileMode.Open);
 
-            int length = (int)numericUpDown1.Value * (int)numericUpDown2.Value * 4;
+            int length = (int)numericUpDown1.Value * (int)numericUpDown2.Value * 3;
 
 
             byte[] buf = new byte[length];
@@ -97,7 +97,7 @@ namespace PiCoder
         {
             FileStream f1 = new FileStream("./output.dat", FileMode.Open);
 
-            int length = (int)numericUpDown3.Value * (int)numericUpDown4.Value * 4;
+            int length = (int)numericUpDown3.Value * (int)numericUpDown4.Value * 3;
 
 
             buff = new byte[length];
@@ -129,8 +129,8 @@ namespace PiCoder
             // for (int i = 0; i < 10000; i++)
             if (strin.Length > 0)
             {
-                pictureBox3.Image = pdec.DecodePartial(strin.Substring(0, 4));
-                strin = strin.Substring(4);
+                pictureBox3.Image = pdec.DecodePartial(strin.Substring(0, 3));
+                strin = strin.Substring(3);
             }
         }
 
@@ -150,7 +150,7 @@ namespace PiCoder
                     strin = "";
                 }
 
-                progressBar1.Value = progressBar1.Maximum - (int)(strin.Length / 4);
+                progressBar1.Value = progressBar1.Maximum - (int)(strin.Length / 3);
             }
 
 

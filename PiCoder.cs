@@ -19,13 +19,13 @@ namespace PiCoder
 
         private string Clr2Str(Color clr)
         {
-            return "" + (char)clr.A + (char)clr.R + (char)clr.G + (char)clr.B;
+            return "" + /*(char)clr.A + */(char)clr.R + (char)clr.G + (char)clr.B;
         }
 
         private Color Str2Clr(string str)
         {
             if (str.Length > 0)
-                return Color.FromArgb((int)str[0], (int)str[1], (int)str[2], (int)str[3]);
+                return Color.FromArgb((int)str[0], (int)str[1], (int)str[2]/*, (int)str[3]*/);
             else return Color.White;
         }
 
@@ -113,7 +113,7 @@ namespace PiCoder
                         int y = (int)(j * Math.Pow(2, k - 1));
                         if (dim[x, y]) continue;
                         res.SetPixel(x, y, Str2Clr(str));
-                        str = str.Substring(4);
+                        str = str.Substring(3);
                         dim[x, y] = true;
                     }
 
@@ -124,7 +124,7 @@ namespace PiCoder
                     int y = (int)(j);
                     if (dim[x, y]) continue;
                     res.SetPixel(x, y, Str2Clr(str));
-                    str = str.Substring(4);
+                    str = str.Substring(3);
                     dim[x, y] = true;
                 }
 
@@ -154,7 +154,7 @@ namespace PiCoder
 
             this.str += input;
 
-            int length = this.str.Length / 4;
+            int length = this.str.Length / 3;
 
             if (this.k > 1)
             {
@@ -188,7 +188,7 @@ namespace PiCoder
                                         if (dim[x, y]) continue;
                                         int size = (int)(Math.Pow(2, k1 - 1));
                                         rect(Str2Clr(str), x, y, size, size);
-                                        this.str = this.str.Substring(4);
+                                        this.str = this.str.Substring(3);
                                         dim[x, y] = true;
                                         length--;
 
@@ -229,7 +229,7 @@ namespace PiCoder
                             int y = (int)(j2);
                             if (dim[x, y]) continue;
                             bmp.SetPixel(x, y, Str2Clr(str));
-                            str = str.Substring(4);
+                            str = str.Substring(3);
                             dim[x, y] = true;
                             length--;
 
