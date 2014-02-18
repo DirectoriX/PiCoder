@@ -19,7 +19,7 @@ namespace PiCoder
 
         private string Clr2Str(Color clr)
         {
-            return "" + /*(char)clr.A + */(char)clr.R + (char)clr.G + (char)clr.B;
+            return "" + (char)clr.R + (char)clr.G + (char)clr.B;
         }
 
         private Color Str2Clr(string str)

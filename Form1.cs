@@ -25,39 +25,33 @@ namespace PiCoder
         private void button1_Click(object sender, EventArgs e)
         {
             bool success = true;
-            try
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
-                if (openFileDialog1.ShowDialog() == DialogResult.OK)
+                try { pictureBox1.Load(openFileDialog1.FileName); }
+                catch (System.ArgumentException)
                 {
-                    pictureBox1.Load(openFileDialog1.FileName);
+                    success = false;
                 }
-            }
-            catch
-            {
-                success = false;
-            }
-            if (success)
-            {
-                PiCoder enc = new PiCoder(pictureBox1.Width, pictureBox1.Height);
+                if (success)
+                {
+                    PiCoder enc = new PiCoder(pictureBox1.Width, pictureBox1.Height);
 
+                    FileStream f1 = new FileStream(openFileDialog1.FileName + ".PiCo", FileMode.Create);
 
-                FileStream f1 = new FileStream("./output.dat", FileMode.Create);
+                    string rrr = enc.Encode(pictureBox1.Image as Bitmap);
+                    int length = rrr.Length;
 
+                    byte[] buf = new byte[length];
+                    char[] str = rrr.ToCharArray(0, length);
 
+                    for (int i = 0; i < length; i++)
+                        buf[i] = (byte)str[i];
 
-                string rrr = enc.Encode(pictureBox1.Image as Bitmap);
-                int length = rrr.Length;
+                    f1.Write(buf, 0, length);
 
-                byte[] buf = new byte[length];
-                char[] str = rrr.ToCharArray(0, length);
-
-                for (int i = 0; i < length; i++)
-                    buf[i] = (byte)str[i];
-
-                f1.Write(buf, 0, length);
-
-                f1.Flush();
-                f1.Close();
+                    f1.Flush();
+                    f1.Close();
+                }
             }
         }
 
@@ -68,60 +62,65 @@ namespace PiCoder
 
         private void button2_Click(object sender, EventArgs e)
         {
+            if (openFileDialog2.ShowDialog() == DialogResult.OK)
+            {
+                FileStream f1 = new FileStream(openFileDialog2.FileName, FileMode.Open);
 
-            FileStream f1 = new FileStream("./output.dat", FileMode.Open);
-
-            int length = (int)numericUpDown1.Value * (int)numericUpDown2.Value * 3;
+                int length = (int)numericUpDown1.Value * (int)numericUpDown2.Value * 3;
 
 
-            byte[] buf = new byte[length];
-            char[] str = new char[length];
+                byte[] buf = new byte[length];
+                char[] str = new char[length];
 
-            f1.Read(buf, 0, length);
+                f1.Read(buf, 0, length);
 
-            f1.Close();
+                f1.Close();
 
-            for (int i = 0; i < length; i++)
-                str[i] = (char)buf[i];
+                for (int i = 0; i < length; i++)
+                    str[i] = (char)buf[i];
 
-            string input = new string(str);
+                string input = new string(str);
 
-            PiCoder dec = new PiCoder((int)numericUpDown1.Value, (int)numericUpDown2.Value);
-            pictureBox2.Width = (int)numericUpDown1.Value;
-            pictureBox2.Height = (int)numericUpDown2.Value;
+                PiCoder dec = new PiCoder((int)numericUpDown1.Value, (int)numericUpDown2.Value);
+                pictureBox2.Width = (int)numericUpDown1.Value;
+                pictureBox2.Height = (int)numericUpDown2.Value;
 
-            pictureBox2.Image = dec.Decode(input);
+                pictureBox2.Image = dec.Decode(input);
+            }
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            FileStream f1 = new FileStream("./output.dat", FileMode.Open);
+            if (openFileDialog2.ShowDialog() == DialogResult.OK)
+            {
+                FileStream f1 = new FileStream(openFileDialog2.FileName, FileMode.Open);
 
-            int length = (int)numericUpDown3.Value * (int)numericUpDown4.Value * 3;
+                int length = (int)numericUpDown3.Value * (int)numericUpDown4.Value * 3;
 
 
-            buff = new byte[length];
-            char[] str = new char[length];
+                buff = new byte[length];
+                char[] str = new char[length];
 
-            f1.Read(buff, 0, length);
+                f1.Read(buff, 0, length);
 
-            f1.Close();
+                f1.Close();
 
-            for (int i = 0; i < length; i++)
-                str[i] = (char)buff[i];
+                for (int i = 0; i < length; i++)
+                    str[i] = (char)buff[i];
 
-            string input = new string(str);
+                string input = new string(str);
 
-            strin = input;
+                strin = input;
 
-            pdec = new PiCoder((int)numericUpDown3.Value, (int)numericUpDown4.Value);
-            pictureBox3.Width = (int)numericUpDown3.Value;
-            pictureBox3.Height = (int)numericUpDown4.Value;
+                pdec = new PiCoder((int)numericUpDown3.Value, (int)numericUpDown4.Value);
+                pictureBox3.Width = (int)numericUpDown3.Value;
+                pictureBox3.Height = (int)numericUpDown4.Value;
 
-            progressBar1.Value = 0;
-            progressBar1.Maximum = (int)numericUpDown3.Value * (int)numericUpDown4.Value;
+                progressBar1.Value = 0;
+                progressBar1.Maximum = (int)numericUpDown3.Value * (int)numericUpDown4.Value;
 
-            timer1.Enabled = true;
+                timer1.Enabled = true;
+            }
         }
 
         private void button4_Click(object sender, EventArgs e)
