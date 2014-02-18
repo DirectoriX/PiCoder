@@ -40,15 +40,16 @@
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.button2 = new System.Windows.Forms.Button();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.trackBar1 = new System.Windows.Forms.TrackBar();
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.numericUpDown4 = new System.Windows.Forms.NumericUpDown();
             this.numericUpDown3 = new System.Windows.Forms.NumericUpDown();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.process1 = new System.Diagnostics.Process();
-            this.button4 = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.progressBar1 = new System.Windows.Forms.ProgressBar();
-            this.trackBar1 = new System.Windows.Forms.TrackBar();
+            this.openFileDialog2 = new System.Windows.Forms.OpenFileDialog();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -57,10 +58,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.tabPage3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             this.SuspendLayout();
             // 
             // openFileDialog1
@@ -86,7 +87,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(252, 212);
+            this.tabPage1.Size = new System.Drawing.Size(410, 332);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "В строку";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -120,7 +121,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(252, 212);
+            this.tabPage2.Size = new System.Drawing.Size(410, 332);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Из строки";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -138,7 +139,7 @@
             // 
             this.numericUpDown2.Location = new System.Drawing.Point(160, 6);
             this.numericUpDown2.Maximum = new decimal(new int[] {
-            300,
+            1000,
             0,
             0,
             0});
@@ -160,7 +161,7 @@
             // 
             this.numericUpDown1.Location = new System.Drawing.Point(89, 6);
             this.numericUpDown1.Maximum = new decimal(new int[] {
-            300,
+            1000,
             0,
             0,
             0});
@@ -204,6 +205,33 @@
             this.tabPage3.Text = "Частями";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
+            // trackBar1
+            // 
+            this.trackBar1.Location = new System.Drawing.Point(8, 39);
+            this.trackBar1.Maximum = 200;
+            this.trackBar1.Minimum = 1;
+            this.trackBar1.Name = "trackBar1";
+            this.trackBar1.Size = new System.Drawing.Size(223, 45);
+            this.trackBar1.TabIndex = 8;
+            this.trackBar1.Value = 50;
+            // 
+            // progressBar1
+            // 
+            this.progressBar1.Location = new System.Drawing.Point(8, 90);
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(223, 21);
+            this.progressBar1.TabIndex = 7;
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(68, 13);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(21, 23);
+            this.button4.TabIndex = 6;
+            this.button4.Text = "4";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
             // button3
             // 
             this.button3.Location = new System.Drawing.Point(8, 13);
@@ -218,7 +246,7 @@
             // 
             this.numericUpDown4.Location = new System.Drawing.Point(166, 13);
             this.numericUpDown4.Maximum = new decimal(new int[] {
-            300,
+            1000,
             0,
             0,
             0});
@@ -240,7 +268,7 @@
             // 
             this.numericUpDown3.Location = new System.Drawing.Point(95, 13);
             this.numericUpDown3.Maximum = new decimal(new int[] {
-            300,
+            1000,
             0,
             0,
             0});
@@ -276,37 +304,15 @@
             this.process1.StartInfo.UserName = "";
             this.process1.SynchronizingObject = this;
             // 
-            // button4
-            // 
-            this.button4.Location = new System.Drawing.Point(68, 13);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(21, 23);
-            this.button4.TabIndex = 6;
-            this.button4.Text = "4";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
-            // 
             // timer1
             // 
             this.timer1.Interval = 25;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // progressBar1
+            // openFileDialog2
             // 
-            this.progressBar1.Location = new System.Drawing.Point(8, 90);
-            this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(223, 21);
-            this.progressBar1.TabIndex = 7;
-            // 
-            // trackBar1
-            // 
-            this.trackBar1.Location = new System.Drawing.Point(8, 39);
-            this.trackBar1.Maximum = 200;
-            this.trackBar1.Minimum = 1;
-            this.trackBar1.Name = "trackBar1";
-            this.trackBar1.Size = new System.Drawing.Size(223, 45);
-            this.trackBar1.TabIndex = 8;
-            this.trackBar1.Value = 50;
+            this.openFileDialog2.Filter = "PiCoder files|*.PiCo";
+            this.openFileDialog2.Title = "OPEN!";
             // 
             // Form1
             // 
@@ -328,10 +334,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -358,6 +364,7 @@
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.ProgressBar progressBar1;
         private System.Windows.Forms.TrackBar trackBar1;
+        private System.Windows.Forms.OpenFileDialog openFileDialog2;
     }
 }
 
